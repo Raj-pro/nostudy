@@ -3,45 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>say no study</title>
+    <title>Say No Study</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        /* Custom styles for the stop icon */
+        #stop-icon {
+            opacity: 0.7; /* Set semi-transparency */
+            transition: opacity 0.3s; /* Smooth transition for opacity */
+            transform: rotate(15deg);
+        }
+        
+        /* Optional: Adjust opacity on hover */
+        #stop-icon:hover {
+            opacity: 1; /* Full opacity on hover */
+        }
+        
+        /* Ensures full height for the body */
+        body {
+            height: 100vh; /* Full height */
+        }
+    </style>
 </head>
-<body class="flex justify-center items-center h-screen bg-blue-500">
-    <div class="flex items-center justify-between w-4/5 max-w-5xl p-5">
+<body id="body" class="flex justify-center items-center bg-blue-500 relative">
+
+    <img id="dynamic-icon" class="absolute w-24 h-24" src="" alt="Random icon" onerror="this.onerror=null; this.src='icon/default.png';" style="top: 16%; right: 64%;">
+    <img id="dynamic-icons0" class="absolute w-24 h-24" src="" alt="Random icon" onerror="this.onerror=null; this.src='icon/default.png';" style="top: 80%; left: 12%;">
+    <img id="dynamic-icons1" class="absolute w-24 h-24" src="" alt="Random icon" onerror="this.onerror=null; this.src='icon/default.png';" style="top: 73%; left: 73%;">
+    
+    <!-- Stop icon positioned in the top left corner with larger size -->
+    <img id="stop-icon" class="absolute top-2 left-2 w-48 h-48" src="icon/stop.png" alt="Stop icon" onerror="this.onerror=null; this.src='icon/default.png';">
+
+    <!-- Fullscreen Button -->
+    <button id="fullscreen-btn">
+        
+    </button>
+
+    <div class="flex items-center justify-between w-4/5 max-w-5xl p-5 h-full">
         <div class="flex flex-col items-start mr-10">
-            <h1 id="quote" class="text-3xl font-bold bg-blue-500 text-white py-2 px-4 rounded-md mb-5">Loading...</h1>
+            <h1 id="quote" class="text-3xl font-bold text-white py-2 px-4 rounded-md mb-5">Loading...</h1>
         </div>
-        <div class="relative w-[400px] h-[300px] rounded-lg overflow-hidden p-5 bg-white shadow-lg">
+        <div class="relative w-[400px] h-[300px] rounded-lg overflow-hidden p-5 bg-white shadow-lg z-0 border-2 border-black">
             <div class="relative w-full h-full rounded-lg overflow-hidden">
-                <img id="dynamic-image" class="w-full h-full object-cover rounded-lg" src="" alt="Random image">
-                <div class="absolute -top-5 -left-5 w-16 h-16 bg-blue-500 rounded-full"></div>
-                <div class="absolute top-24 left-64 w-20 h-20 bg-red-400 rounded-full"></div>
+                <img id="dynamic-image" class="w-full h-full object-cover rounded-lg border-2 border-black" src="" alt="Random image" onerror="this.onerror=null; this.src='images/default.jpg';">
             </div>
         </div>
     </div>
 
     <script>
         const csvFilePath = 'list.csv';
-
+    
+        // Array of icon paths
+        const icons = [
+            'icon/1.png', 'icon/2.png', 'icon/3.png', 
+            'icon/4.png', 'icon/5.png', 'icon/6.png', 
+            'icon/7.png', 'icon/8.png', 'icon/9.png', 
+            'icon/10.png'
+        ];
+    
+        const icons0 = [
+            'icon/4.png', 'icon/5.png', 'icon/6.png', 
+            'icon/7.png', 'icon/8.png', 'icon/9.png', 
+            'icon/10.png', 'icon/11.png', 'icon/12.png', 
+            'icon/13.png'
+        ];
+    
+        const icons1 = [
+            'icon/7.png', 'icon/8.png', 'icon/9.png', 
+            'icon/10.png', 'icon/11.png', 'icon/12.png', 
+            'icon/14.png', 'icon/1.png', 'icon/3.png', 
+            'icon/13.png'
+        ];
+    
+        // Array of colors
+        const colors = [
+            '#3b82f6', '#a03bf6', '#f6c84a', '#34d399',
+            '#f59e0b', '#8b5cf6', '#ec4899', '#f97316',
+            '#4b5563', '#6ee7b7', '#9333ea', '#fbbf24',
+            '#7c3aed', '#fca5a1', '#a5b4fc', '#facc15',
+            '#34d399', '#eab308'
+        ];
+    
         function loadCSV() {
             Papa.parse(csvFilePath, {
                 download: true,
                 header: false,
                 complete: function(results) {
                     const data = results.data;
-
                     const randomEntry = data[Math.floor(Math.random() * data.length)];
                     const imagePath = randomEntry[0];
                     const quote = randomEntry[1];
-
+    
+                    // Set random icon
+                    updateIcons();
+    
+                    // Set random color
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    document.getElementById('body').style.backgroundColor = randomColor;
+    
+                    // Update image and quote
                     document.getElementById('dynamic-image').src = imagePath;
                     document.getElementById('quote').innerText = quote;
+                },
+                error: function(error) {
+                    console.error('Error loading the CSV file:', error);
+                    document.getElementById('quote').innerText = 'Failed to load quote.';
                 }
             });
         }
-
-        window.onload = loadCSV;
+    
+        function updateIcons() {
+            // Set random icon
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            document.getElementById('dynamic-icon').src = randomIcon;
+    
+            // Set random icon0
+            const randomIcon0 = icons0[Math.floor(Math.random() * icons0.length)];
+            document.getElementById('dynamic-icons0').src = randomIcon0;
+    
+            // Set random icon1
+            const randomIcon1 = icons1[Math.floor(Math.random() * icons1.length)];
+            document.getElementById('dynamic-icons1').src = randomIcon1;
+        }
+    
+        function startIconRotation() {
+            setInterval(() => {
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                document.getElementById('dynamic-icon').src = randomIcon;
+            }, 1200); // Change icon every 1 second
+    
+            setInterval(() => {
+                const randomIcon0 = icons0[Math.floor(Math.random() * icons0.length)];
+                document.getElementById('dynamic-icons0').src = randomIcon0;
+            }, 1500); // Change icon0 every 2 seconds
+    
+            setInterval(() => {
+                const randomIcon1 = icons1[Math.floor(Math.random() * icons1.length)];
+                document.getElementById('dynamic-icons1').src = randomIcon1;
+            }, 1300); // Change icon1 every 3 seconds
+        }
+    
+        function toggleFullscreen() {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        }
+    
+        document.getElementById('fullscreen-btn').addEventListener('click', toggleFullscreen);
+    
+        window.onload = () => {
+            loadCSV();
+            startIconRotation();
+            toggleFullscreen(); // Trigger fullscreen mode on load
+        };
     </script>
+    
 </body>
 </html>
