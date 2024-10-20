@@ -1,5 +1,5 @@
 # NoStudyBro - Motivational Break Website
-```Live Demo```
+Live Demo
 NoStudyBro is a simple, one-page website designed to motivate students (and anyone working hard) to take a break from their studies and relax. Every time you visit the site, a new motivational quote and image are displayed, and the background color changes, giving you a fresh experience to help reset your mind and reduce burnout.
 
 ### Features
