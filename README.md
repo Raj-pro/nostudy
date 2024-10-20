@@ -1,26 +1,28 @@
-NoStudyBro - Motivational Break Website
-Live Demo
+# NoStudyBro - Motivational Break Website
+```Live Demo```
 NoStudyBro is a simple, one-page website designed to motivate students (and anyone working hard) to take a break from their studies and relax. Every time you visit the site, a new motivational quote and image are displayed, and the background color changes, giving you a fresh experience to help reset your mind and reduce burnout.
-Features
-•	Dynamic Quotes: A new motivational quote is shown every time the page is refreshed.
-•	Rotating Images: Along with the quotes, the website also displays a new image each time, providing visual encouragement to take a break.
-•	Color Change: The background color changes dynamically with each visit, adding an extra layer of variety to keep the experience refreshing.
-•	Minimalist Design: The website is clean and simple, with a focus on quick motivation without distractions.
-•	Responsive Layout: Works across different screen sizes, ensuring users can access it from both mobile and desktop devices.
-Technologies Used
+
+###Features
+-	Dynamic Quotes: A new motivational quote is shown every time the page is refreshed.
+-	Rotating Images: Along with the quotes, the website also displays a new image each time, providing visual encouragement to take a break.
+-	Color Change: The background color changes dynamically with each visit, adding an extra layer of variety to keep the experience refreshing.
+-	Minimalist Design: The website is clean and simple, with a focus on quick motivation without distractions.
+-	Responsive Layout: Works across different screen sizes, ensuring users can access it from both mobile and desktop devices.
+
+### Technologies Used
 •	HTML: For the basic structure of the webpage.
 •	CSS: For styling the layout, colors, and positioning of elements.
 •	JavaScript: To handle the dynamic content (changing quotes, images, and colors).
 
-How It Works
+###How It Works
 •	Quotes & Images: The website has a pre-set list of motivational quotes and corresponding images. Each time the page is loaded, one is randomly selected and displayed.
 •	Color Change: A random color is generated and applied to the background with every refresh to create a new visual experience each time.
 
 Setup Instructions
 1.	Clone the repository:
-git clone https://github.com/Raj-pro/nostudy.git
+> git clone https://github.com/Raj-pro/nostudy.git
 2.	Navigate to the project directory:
-cd nostudy
+>cd nostudy
 3.	Open the index.html file in your browser to view the website locally:
 open index.html
 
