@@ -2,7 +2,7 @@
 ```Live Demo```
 NoStudyBro is a simple, one-page website designed to motivate students (and anyone working hard) to take a break from their studies and relax. Every time you visit the site, a new motivational quote and image are displayed, and the background color changes, giving you a fresh experience to help reset your mind and reduce burnout.
 
-###Features
+### Features
 -	Dynamic Quotes: A new motivational quote is shown every time the page is refreshed.
 -	Rotating Images: Along with the quotes, the website also displays a new image each time, providing visual encouragement to take a break.
 -	Color Change: The background color changes dynamically with each visit, adding an extra layer of variety to keep the experience refreshing.
@@ -14,7 +14,7 @@ NoStudyBro is a simple, one-page website designed to motivate students (and anyo
 •	CSS: For styling the layout, colors, and positioning of elements.
 •	JavaScript: To handle the dynamic content (changing quotes, images, and colors).
 
-###How It Works
+### How It Works
 •	Quotes & Images: The website has a pre-set list of motivational quotes and corresponding images. Each time the page is loaded, one is randomly selected and displayed.
 •	Color Change: A random color is generated and applied to the background with every refresh to create a new visual experience each time.
 
